@@ -1,0 +1,12 @@
+{
+  "name": "dnd-spell-cards",
+  "version": "1.0.0",
+  "author": "Michael Little <michael.little@xero.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
+}
