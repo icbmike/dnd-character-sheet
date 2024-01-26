@@ -42,6 +42,14 @@ const h2 = h(2);
 const h3 = h(3);
 const h4 = h(4);
 
+const img = (cssClasses, src) => {
+    const newElement = elementWithClasses('img', cssClasses);
+
+    newElement.src = src;
+
+    return newElement;
+}
+
 const div = (cssClasses, children = []) => {
     const newElement = elementWithClasses('div', cssClasses);
    
@@ -53,7 +61,6 @@ const div = (cssClasses, children = []) => {
 const spellAttribute = ( labelText, attributeText) => 
     p('spellAttribute', [span('spellAttributeLabel', `${labelText}: `), attributeText])
        
-
 const spellCard = (spell) => 
     div('spellCard', [
         h1('name', spell.name),
@@ -62,7 +69,8 @@ const spellCard = (spell) =>
         spellAttribute('Level', spell.level),
         spellAttribute('School', spell.school),
         ...spell.description.split('\n').map(l => p('description', l)),
-        spellAttribute('At higher levels', spell.higherLevels)
+        spellAttribute('At higher levels', spell.higherLevels),
+        img('spellIcon', spell.imageSrc)
     ]);
 
 const spellCardList = (spellCards) => div('spellCards', spellCards);
