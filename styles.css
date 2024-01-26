@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.spellCard {
+    display: inline-block;
+    width: 600px;
+    border:1px solid black;
+    padding: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.spellCards {
+    padding:20px;
+    display: flex;
+}
+
+.spellCards > * {
+    margin-right: 12px;
+}
+
+.name {
+    margin-bottom: 16px;
+}
+
+.description {
+    margin-bottom: 16px;
+}
