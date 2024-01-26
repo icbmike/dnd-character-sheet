@@ -11,10 +11,18 @@ const elementWithClasses = (elementName, cssClasses) => {
     return newElement;
 }
 
-const p = (cssClasses, text) => {
-    const newElement = elementWithClasses('p', cssClasses)
+const span = (cssClasses, text) => {
+    const newElement = elementWithClasses('span', cssClasses)
 
     newElement.innerHTML = text;
+    
+    return newElement;
+}
+
+const p = (cssClasses, children) => {
+    const newElement = elementWithClasses('p', cssClasses)
+
+    newElement.append(...children);
     
     return newElement;
 } 
@@ -42,10 +50,19 @@ const div = (cssClasses, children = []) => {
     return newElement;
 }
 
+const spellAttribute = ( labelText, attributeText) => 
+    p('spellAttribute', [span('spellAttributeLabel', `${labelText}: `), attributeText])
+       
+
 const spellCard = (spell) => 
     div('spellCard', [
         h1('name', spell.name),
-        ...spell.description.split('\n').map(l => p('description', l))
+        spellAttribute('Casting time', spell.castingTime),
+        spellAttribute('Duration', spell.duration),
+        spellAttribute('Level', spell.level),
+        spellAttribute('School', spell.school),
+        ...spell.description.split('\n').map(l => p('description', l)),
+        spellAttribute('At higher levels', spell.higherLevels)
     ]);
 
 const spellCardList = (spellCards) => div('spellCards', spellCards);

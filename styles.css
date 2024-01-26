@@ -15,16 +15,24 @@
 .spellCards {
     padding:20px;
     display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
 }
 
 .spellCards > * {
     margin-right: 12px;
+    margin-bottom: 12px;
 }
 
-.name {
-    margin-bottom: 16px;
-}
-
+.name,
 .description {
     margin-bottom: 16px;
+}
+
+.spellAttribute {
+    margin-bottom: 4px;
+}
+
+.spellAttributeLabel {
+    font-weight: bold;
 }
