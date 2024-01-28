@@ -1,4 +1,19 @@
 {
+    "class": "Cleric",
+    "subClass": "Tempest",
+    "name": "Caesar",
+    "race": "Hadozee",
+    "level": 6,
+    "maxHitPoints": 32,
+    "abilities": {
+        "strength": 12,
+        "dexterity": 12,
+        "constitution": 14,
+        "intelligence": 12,
+        "wisdom": 15,
+        "charisma": 8
+    },
+    "speed": 30,
     "spells": [
         {
             "name": "Thunderwave",

@@ -12,7 +12,7 @@ body {
 .card {
     display: inline-block;
     width: 600px;
-    border:1px solid black;
+    border: 1px solid black;
     padding: 12px;
     position: relative;
 }
@@ -23,8 +23,7 @@ body {
     align-items: flex-start;
 }
 
-.cardList > *
-{
+.cardList>* {
     margin-right: 12px;
     margin-bottom: 12px;
 }
@@ -50,4 +49,42 @@ body {
 
 .margin-bottom {
     margin-bottom: 16px;
+}
+
+.abilities {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.savingThrows {
+    display: inline-block;
+}
+
+.ability {
+    border: 1px solid black;
+    display: inline-block;
+    padding: 16px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.abilityName {
+    text-transform: capitalize;
+}
+
+.abilityModifier {
+    font-weight: bold;
+}
+
+.hitPoints {
+    border: 1px solid black;
+    width: 200px;
+    height: 100px;
+    margin-bottom: 16px;
+    text-align: center;
+    padding: 8px;
+}
+
+.flex {
+    display: flex;
 }
