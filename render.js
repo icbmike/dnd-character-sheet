@@ -62,7 +62,7 @@ const spellAttribute = ( labelText, attributeText) =>
     p('spellAttribute', [span('spellAttributeLabel', `${labelText}: `), attributeText])
        
 const spellCard = (spell) => 
-    div('spellCard', [
+    div('card', [
         h1('name', spell.name),
         spellAttribute('Casting time', spell.castingTime),
         spellAttribute('Duration', spell.duration),
@@ -73,11 +73,21 @@ const spellCard = (spell) =>
         img('spellIcon', spell.imageSrc)
     ]);
 
-const spellCardList = (spellCards) => div('spellCards', spellCards);
+const spellCardList = (spells) => div('cardList', spells.map(s => spellCard(s)));
 
+const abilitiyCard = (ability) =>
+    div('card', [
+        h1('name', ability.name),
+        ...ability.description.split('\n').map(l => p('description', l)),
+    ])
+
+const abilitiyCardList = (abilites) => div('cardList', abilites.map(a => abilitiyCard(a)))
 
 const render = (rootElement, data) => {
     rootElement.append(
-        spellCardList(data.spells.map(s => spellCard(s)))
+        h1('margin-bottom', 'Spells'),
+        spellCardList(data.spells),
+        h1('margin-bottom', 'Class Abilites'),
+        abilitiyCardList(data.classAbilities)
     );
 }
