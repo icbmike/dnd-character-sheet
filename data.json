@@ -5,6 +5,8 @@
     "race": "Hadozee",
     "level": 6,
     "maxHitPoints": 32,
+    "armorClass": 15,
+    "hitDie": "d8",
     "abilities": {
         "strength": 12,
         "dexterity": 12,

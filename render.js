@@ -16,13 +16,16 @@ const hitPoints = (data) => div('hitPointsAndTempHitPoints', [
     div('hitPoints', [
         attribute('Max hit points', data.maxHitPoints)
     ]),
-    div('hitPoints tempHitPoints', 'Temp hit points')
+    div('hitPoints tempHitPoints', 'Temp hit points'),
+    div('hitDie', [
+        attribute('Hit Die',  `${data.level}${data.hitDie}`)
+    ])
 ]);
 
 const savingThrows = (data) =>
     div('savingThrows',
         [
-            h3('margin-bottom', 'Saving Throws'),
+            h3('Saving Throws'),
             ...Object.keys(data.abilities).map(k => {
                 const savingThrowValue = scoreToModifier(data.abilities[k]) + (['wisdom', 'charisma'].includes(k) ? proficiencyBonus(data) : 0);
                 const sign = savingThrowValue > 0 ? '+' : '';
@@ -70,7 +73,7 @@ const skillModifier = (ability, skill, data) =>
     scoreToModifier(data.abilities[ability]) + (data.skills.includes(skill) ? proficiencyBonus(data) : 0)
 
 const skills = (data) => div('skills', [
-    h3('margin-bottom', 'Skills'),
+    h3('Skills'),
     ...Object.keys(allSkills)
         .flatMap(k => allSkills[k].map(s => ({ ability: k, skill: s })))
         .sort((a, b) => a.skill > b.skill)
@@ -85,20 +88,46 @@ const skills = (data) => div('skills', [
         })
 ]);
 
+const spellSlot = (spellLevel, total) => div('spellSlot', [
+    div('spellSlotLevel', `Level ${spellLevel}`),
+    div('spellSlotTotal', `Total slots ${total}`),
+    div('spellSlotsUsedTally', '')
+])
 
-const stats = (data) =>
-    div('margin-bottom', [
-        attribute('Level', data.level),
-        attribute('Proficiency Bonus', proficiencyBonus(data)),
-        attribute('Speed', data.speed),
-        attribute('Initiative', scoreToModifier(data.abilities.dexterity), ['margin-bottom']),
-        hitPoints(data),
-        div(['abilitiesAndSavingThrows'], [
-            abilities(data.abilities),
-            savingThrows(data),
-            skills(data)
-        ])
-    ]);
+const spellCasting = (data) =>  div('spellSlots', [
+    h3('margin-bottom', 'Spell Slots'),
+    div('spellSlotsContainer', [
+        spellSlot(1, 4),
+        spellSlot(2, 3),
+        spellSlot(3, 3),
+    ])  
+]);
+
+const stats = (data) => [
+    div('row margin-bottom', [
+        div('stats', [
+            h1('margin-bottom', data.name),
+            attribute('Race', data.race),
+            attribute('Level', data.level),
+            attribute('Speed', data.speed),
+            attribute('Initiative', scoreToModifier(data.abilities.dexterity)),
+            attribute('Proficiency Bonus', proficiencyBonus(data)),
+            attribute('Armor Class', data.armorClass),
+            attribute('Spellcasting Ability', 'Wisdom'),
+            attribute('Spell Attack Bonus', scoreToModifier(data.abilities.wisdom) + proficiencyBonus(data)),
+            attribute('Spell Save DC', 8 + scoreToModifier(data.abilities.wisdom) + proficiencyBonus(data))
+        ]),
+        div([
+            hitPoints(data),
+            spellCasting(data)
+        ]),
+    ]),
+    div(['abilitiesAndSavingThrows', 'margin-bottom'], [
+        abilities(data.abilities),
+        savingThrows(data),
+        skills(data)
+    ])
+];
 
 const spellCard = (spell) =>
     div('card', [
@@ -124,8 +153,7 @@ const abilitiyCardList = (abilities) => div('cardList', abilities.map(a => abili
 
 const render = (rootElement, data) => {
     rootElement.append(
-        h1('margin-bottom', data.name),
-        stats(data),
+        ...stats(data),
         h2('margin-bottom', 'Spells'),
         spellCardList(data.spells),
         h2('margin-bottom', 'Class abilities'),

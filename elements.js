@@ -28,10 +28,18 @@ const p = (cssClasses, children) => {
 }
 
 const h = (size) => {
-  return (cssClasses, text) => {
-    const newElement = elementWithClasses(`h${size}`, cssClasses)
+  return (...arguments) => {
+    if(arguments.length === 1){
+      const newElement = elementWithClasses(`h${size}`, [])
 
-    newElement.innerHTML = text;
+    newElement.innerHTML = arguments[0];
+
+    return newElement;
+    }
+
+    const newElement = elementWithClasses(`h${size}`, arguments[0])
+
+    newElement.innerHTML = arguments[1];
 
     return newElement;
   }
@@ -50,10 +58,18 @@ const img = (cssClasses, src) => {
   return newElement;
 }
 
-const div = (cssClasses, children = []) => {
-  const newElement = elementWithClasses('div', cssClasses);
+const div = (...arguments) => {
+  if(arguments.length === 1) {
+    const newElement = elementWithClasses('div', []);
 
-  newElement.append(...children);
+    newElement.append(...arguments[0]);
+  
+    return newElement;
+  } else {
+    const newElement = elementWithClasses('div', arguments[0]);
 
-  return newElement;
+    newElement.append(...arguments[1]);
+  
+    return newElement;
+  }
 }
