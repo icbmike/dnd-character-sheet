@@ -98,6 +98,11 @@ const spellCasting = (data) =>  div('spellSlots', [
         spellSlot(1, 4),
         spellSlot(2, 3),
         spellSlot(3, 3),
+        div('spellSlot', [
+            div('spellSlotLevel', `Channel Divinity`),
+            div('spellSlotTotal', `Total uses: 2`),
+            div('spellSlotsUsedTally', '')
+        ])
     ])  
 ]);
 
@@ -123,7 +128,10 @@ const stats = (data) => [
     div(['abilitiesAndSavingThrows', 'margin-bottom'], [
         abilities(data.abilities),
         savingThrows(data),
-        skills(data)
+        skills(data),
+        div('otherProficiencies', [
+            h3('Other Proficiencies')
+        ])
     ])
 ];
 

@@ -151,12 +151,12 @@ body {
 .spellSlots {
     border: 1px solid black;;
     padding: 8px;
-    width: 550px;
+    width: 625px;
 }
 
 .spellSlot {
     border: 1px solid black;
-    width: 250px;
+    
     display: flex;
     align-items: center;
 }
@@ -171,7 +171,7 @@ body {
 }
 
 .spellSlotsUsedTally {
-    width: 50px;
+    width: 75px;
 }
 
 .spellSlotsContainer {
@@ -182,4 +182,15 @@ body {
 
 .classAbilityCard {
     padding-right: 155px;
+}
+
+.otherProficiencies {
+    border: 1px solid black;
+    padding: 12px;
+    align-self: stretch;
+    width: 370px;
+}
+
+.stats {
+    width: 212px;
 }
