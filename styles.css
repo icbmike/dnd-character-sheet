@@ -47,6 +47,10 @@ body {
     right: 5px;
 }
 
+.margin-right {
+    margin-right: 16px;
+}
+
 .margin-bottom {
     margin-bottom: 16px;
 }
@@ -58,13 +62,18 @@ body {
 
 .savingThrows {
     display: inline-block;
+    border: 1px solid black;
+    padding: 16px;
+}
+
+.savingThrowModifier {
+    font-weight: bold;
 }
 
 .ability {
     border: 1px solid black;
     display: inline-block;
     padding: 16px;
-    font-size: 1.2em;
     text-align: center;
 }
 
@@ -72,19 +81,64 @@ body {
     text-transform: capitalize;
 }
 
+.savingThrowModifierName {
+    text-transform: capitalize;
+    display: inline-block;
+    width: 100px;
+}
+
 .abilityModifier {
     font-weight: bold;
+}
+
+.hitPointsAndTempHitPoints {
+    margin-bottom: 16px;
+    display: flex;
+}
+
+.hitPointsAndTempHitPoints>* {
+    margin-right: 12px;
 }
 
 .hitPoints {
     border: 1px solid black;
     width: 200px;
     height: 100px;
-    margin-bottom: 16px;
     text-align: center;
     padding: 8px;
 }
 
+.tempHitPoints {
+    font-weight: bold;
+}
+
+.abilitiesAndSavingThrows {
+    display: flex;
+    align-items: flex-start;
+}
+
+.abilitiesAndSavingThrows>* {
+    margin-right: 12px;
+}
+
 .flex {
     display: flex;
+}
+
+.skills {
+    border: 1px solid black;
+    padding: 12px;
+}
+
+.skillName {
+    text-transform: capitalize;
+    display: inline-block;
+    width: 115px;
+}
+
+.skillModifier {
+    display: inline-block;
+    width: 20px;
+    text-align: right;
+    font-weight: bold;
 }

@@ -12,21 +12,79 @@ const abilities = (abilities) =>
 const attribute = (labelText, attributeText, classList = []) =>
     p(['spellAttribute', ...classList], [span('spellAttributeLabel', `${labelText}: `), attributeText]);
 
-const hitPoints = (data) =>
+const hitPoints = (data) => div('hitPointsAndTempHitPoints', [
     div('hitPoints', [
         attribute('Max hit points', data.maxHitPoints)
-    ]);
+    ]),
+    div('hitPoints tempHitPoints', 'Temp hit points')
+]);
 
 const savingThrows = (data) =>
-    div('savingThrows', Object.keys(data.abilities).map(k => {
-        const savingThrowValue = scoreToModifier(data.abilities[k]) + (['wisdom', 'charisma'].includes(k) ? proficiencyBonus(data) : 0);
-        const sign = savingThrowValue > 0 ? '+' : '';
+    div('savingThrows',
+        [
+            h3('margin-bottom', 'Saving Throws'),
+            ...Object.keys(data.abilities).map(k => {
+                const savingThrowValue = scoreToModifier(data.abilities[k]) + (['wisdom', 'charisma'].includes(k) ? proficiencyBonus(data) : 0);
+                const sign = savingThrowValue > 0 ? '+' : '';
 
-        return div('abilitySavingThrow', [
-            div('abilityName', k),
-            span('savingThrowModifier', `${sign}${savingThrowValue}`)
-        ])
-    }));
+                return div('abilitySavingThrow', [
+                    span('savingThrowModifierName', k),
+                    span('savingThrowModifier', `${sign}${savingThrowValue}`)
+                ])
+            })
+        ]
+    );
+
+const allSkills = {
+    "strength": [
+        'athletics',
+    ],
+    "dexterity": [
+        'acrobatics',
+        'sleight_of_hand',
+        'stealth',
+    ],
+    "intelligence": [
+        'arcana',
+        'history',
+        'investigation',
+        'nature',
+        'religion',
+    ],
+    "wisdom": [
+        'animal_handling',
+        'insight',
+        'medicine',
+        'perception',
+        'survival'
+    ],
+    "charisma": [
+        'deception',
+        'intimidation',
+        'performance',
+        'persuasion',
+    ]
+};
+
+const skillModifier = (ability, skill, data) =>
+    scoreToModifier(data.abilities[ability]) + (data.skills.includes(skill) ? proficiencyBonus(data) : 0)
+
+const skills = (data) => div('skills', [
+    h3('margin-bottom', 'Skills'),
+    ...Object.keys(allSkills)
+        .flatMap(k => allSkills[k].map(s => ({ ability: k, skill: s })))
+        .sort((a, b) => a.skill > b.skill)
+        .map(({ ability, skill }) => {
+            const skillName = skill.split('_').join(' ');
+
+            return div('skill', [
+                span('skillName', skillName),
+                ' ',
+                span('skillModifier', skillModifier(ability, skill, data))
+            ]);
+        })
+]);
+
 
 const stats = (data) =>
     div('margin-bottom', [
@@ -35,9 +93,10 @@ const stats = (data) =>
         attribute('Speed', data.speed),
         attribute('Initiative', scoreToModifier(data.abilities.dexterity), ['margin-bottom']),
         hitPoints(data),
-        div(['flex', 'margin-bottom'], [
+        div(['abilitiesAndSavingThrows'], [
             abilities(data.abilities),
-            savingThrows(data)
+            savingThrows(data),
+            skills(data)
         ])
     ]);
 

@@ -14,6 +14,10 @@
         "charisma": 8
     },
     "speed": 30,
+    "skills": [
+        "religion",
+        "insight"
+    ],
     "spells": [
         {
             "name": "Thunderwave",
