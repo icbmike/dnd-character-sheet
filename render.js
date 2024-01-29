@@ -1,43 +1,3 @@
-const scoreToModifier = (score) => Math.floor((score - 10) / 2)
-
-const proficiencyBonus = (data) => 2 + Math.floor((data.level - 1) / 4)
-
-const abilities = (abilities) =>
-    div(['abilities',], Object.keys(abilities).map(k => div('ability', [
-        div('abilityName', k),
-        span('abilityScore', abilities[k]),
-        span('abilityModifier', ` (${scoreToModifier(abilities[k])})`)
-    ])));
-
-const attribute = (labelText, attributeText, classList = []) =>
-    p(['spellAttribute', ...classList], [span('spellAttributeLabel', `${labelText}: `), attributeText]);
-
-const hitPoints = (data) => div('hitPointsAndTempHitPoints', [
-    div('hitPoints', [
-        attribute('Max hit points', data.maxHitPoints)
-    ]),
-    div('hitPoints tempHitPoints', 'Temp hit points'),
-    div('hitDie', [
-        attribute('Hit Die',  `${data.level}${data.hitDie}`)
-    ])
-]);
-
-const savingThrows = (data) =>
-    div('savingThrows',
-        [
-            h3('Saving Throws'),
-            ...Object.keys(data.abilities).map(k => {
-                const savingThrowValue = scoreToModifier(data.abilities[k]) + (['wisdom', 'charisma'].includes(k) ? proficiencyBonus(data) : 0);
-                const sign = savingThrowValue > 0 ? '+' : '';
-
-                return div('abilitySavingThrow', [
-                    span('savingThrowModifierName', k),
-                    span('savingThrowModifier', `${sign}${savingThrowValue}`)
-                ])
-            })
-        ]
-    );
-
 const allSkills = {
     "strength": [
         'athletics',
@@ -68,6 +28,44 @@ const allSkills = {
         'persuasion',
     ]
 };
+
+const scoreToModifier = (score) => Math.floor((score - 10) / 2)
+
+const proficiencyBonus = (data) => 2 + Math.floor((data.level - 1) / 4)
+
+const abilities = (abilities) =>
+    div(['abilities',], Object.keys(abilities).map(k => div('ability', [
+        div('abilityName', k),
+        span('abilityScore', abilities[k]),
+        span('abilityModifier', ` (${scoreToModifier(abilities[k])})`)
+    ])));
+
+const attribute = (labelText, attributeText, classList = []) =>
+    p(['spellAttribute', ...classList], [span('spellAttributeLabel', `${labelText}: `), attributeText]);
+
+const hitPoints = (data) => div('hitPointsAndTempHitPoints', [
+    div('hitPoints', [
+        attribute('Max hit points', data.maxHitPoints)
+    ]),
+    div('hitPoints tempHitPoints', 'Temp hit points'),
+    div('hitDie', [
+        attribute('Hit Die',  `${data.level}${data.hitDie}`)
+    ])
+]);
+
+const savingThrows = (data) =>
+    div('savingThrows', [
+        h3('Saving Throws'),
+        ...Object.keys(data.abilities).map(k => {
+            const savingThrowValue = scoreToModifier(data.abilities[k]) + (['wisdom', 'charisma'].includes(k) ? proficiencyBonus(data) : 0);
+            const sign = savingThrowValue > 0 ? '+' : '';
+
+            return div('abilitySavingThrow', [
+                span('savingThrowModifierName', k),
+                span('savingThrowModifier', `${sign}${savingThrowValue}`)
+            ])
+        })
+    ]);
 
 const skillModifier = (ability, skill, data) =>
     scoreToModifier(data.abilities[ability]) + (data.skills.includes(skill) ? proficiencyBonus(data) : 0)
@@ -144,16 +142,39 @@ const spellCard = (spell) =>
 const spellCardList = (spells) => div('cardList', spells.map(s => spellCard(s)));
 
 const abilitiyCard = (ability) =>
-    div('card', [
+    div('card classAbilityCard', [
         h3('name', ability.name),
         ...ability.description.split('\n').map(l => p('description', l)),
+        img('spellIcon', ability.imageSrc)
     ])
 
 const abilitiyCardList = (abilities) => div('cardList', abilities.map(a => abilitiyCard(a)))
 
+const attackRole = (weapon, data) => weapon.range.includes('melee') 
+    ? `d20 + ${proficiencyBonus(data) + scoreToModifier(data.abilities.strength)}`
+    : `d20 + ${proficiencyBonus(data) + scoreToModifier(data.abilities.dexterity)}`;
+
+const damageRole = (weapon, data) => weapon.range.includes('melee') 
+? `${weapon.damage} + ${scoreToModifier(data.abilities.strength)}`
+: `${weapon.damage} + ${scoreToModifier(data.abilities.dexterity)}`;
+
+const weapon = (weapon, data) => div('card', [
+    h3('name', weapon.name),
+    attribute('Attack roll', attackRole(weapon, data)),
+    attribute('Damage', damageRole(weapon, data)),
+    attribute('Damage type', weapon.damageType),
+    attribute('Weapon type', weapon.weaponType),
+    attribute('Range', weapon.range),
+    img('spellIcon', weapon.imageSrc)
+]) 
+
+const equipment = (data) => div('cardList', data.equipment.map(e => weapon(e, data)));
+
 const render = (rootElement, data) => {
     rootElement.append(
         ...stats(data),
+        h2('margin-bottom', 'Equipment'),
+        equipment(data),
         h2('margin-bottom', 'Spells'),
         spellCardList(data.spells),
         h2('margin-bottom', 'Class abilities'),

@@ -102,23 +102,46 @@
     "classAbilities": [
         {
             "name": "Channel Divinity: Turn Undead",
-            "description": "As an action, you present your holy symbol and speak a prayer censuring the undead. Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.\nA turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action."
+            "description": "As an action, you present your holy symbol and speak a prayer censuring the undead. Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.\nA turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action.",
+            "imageSrc": "./icons/turn_undead.webp"
         },
         {
             "name": "Channel Divinity: Destroy Undead",
-            "description": "Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Cleric table above."
+            "description": "Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Cleric table above.",
+            "imageSrc": "./icons/destroy_undead.webp"
         },
         {
             "name": "Wrath of the Storm",
-            "description": "Also at 1st level, you can thunderously rebuke attackers. When a creature within 5 feet of you that you can see hits you with an attack, you can use your reaction to cause the creature to make a Dexterity saving throw. The creature takes 2d8 lightning or thunder damage (your choice) on a failed saving throw, and half as much damage on a successful one.\nYou can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest."
+            "description": "Also at 1st level, you can thunderously rebuke attackers. When a creature within 5 feet of you that you can see hits you with an attack, you can use your reaction to cause the creature to make a Dexterity saving throw. The creature takes 2d8 lightning or thunder damage (your choice) on a failed saving throw, and half as much damage on a successful one.\nYou can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest.",
+            "imageSrc": "./icons/wrath_of_the_storm.webp"
         },
         {
             "name": "Channel Divinity: Destructive Wrath",
-            "description": "Starting at 2nd level, you can use your Channel Divinity to wield the power of the storm with unchecked ferocity.\nWhen you roll lightning or thunder damage, you can use your Channel Divinity to deal maximum damage, instead of rolling."
+            "description": "Starting at 2nd level, you can use your Channel Divinity to wield the power of the storm with unchecked ferocity.\nWhen you roll lightning or thunder damage, you can use your Channel Divinity to deal maximum damage, instead of rolling.",
+            "imageSrc": "./icons/destructive_wrath.webp"
         },
         {
             "name": "Thunderous Strike",
-            "description": "At 6th level, when you deal lightning damage to a Large or smaller creature, you can also push it up to 10 feet away from you."
+            "description": "At 6th level, when you deal lightning damage to a Large or smaller creature, you can also push it up to 10 feet away from you.",
+            "imageSrc": "./icons/thunderous_strike.webp"
+        }
+    ],
+    "equipment": [
+        {
+            "name": "Warhammer",
+            "damage": "1d8 (1d10 when wielded with two hands)",
+            "damageType": "Bludgeoning",
+            "weaponType": "hammer, martial",
+            "range": "melee (5 feet)",
+            "imageSrc": "./icons/warhammer.png"
+        },
+        {
+            "name": "Light Crossbow",
+            "damage": "1d8",
+            "damageType": "Piercing",
+            "weaponType": "crossbow, simple",
+            "range": "80 feet (320 feet with disadvantage)",
+            "imageSrc": "./icons/light_crossbow.png"
         }
     ]
 }

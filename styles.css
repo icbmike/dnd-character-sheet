@@ -20,6 +20,7 @@ body {
     border: 1px solid black;
     padding: 12px;
     position: relative;
+    min-height: 160px;
 }
 
 .cardList {
@@ -27,6 +28,7 @@ body {
     flex-wrap: wrap;
     align-items: flex-start;
     gap: 12px;
+    margin-bottom: 12px;
 }
 
 .name,
@@ -46,6 +48,8 @@ body {
     position: absolute;
     top: 5px;
     right: 5px;
+    width: 150px;
+    height: 150px;
 }
 
 .margin-right {
@@ -174,4 +178,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+}
+
+.classAbilityCard {
+    padding-right: 155px;
 }
