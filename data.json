@@ -97,6 +97,17 @@
             "description": "Until the spell ends, freezing rain and sleet fall in a 20-foot-tall cylinder with a 40-foot radius centered on a point you choose within range. The area is heavily obscured, and exposed flames in the area are doused.\nThe ground in the area is covered with slick ice, making it difficult terrain. When a creature enters the spell's area for the first time on a turn or starts its turn there, it must make a Dexterity saving throw. On a failed save, it falls prone.\nIf a creature starts its turn in the spell's area and is concentrating on a spell, the creature must make a successful Constitution saving throw against your spell save DC or lose concentration.",
             "higherLevels": "No effect",
             "imageSrc": "./icons/sleet_storm.png"
+        },
+        {
+            "name": "Guidance",
+            "castingTime": "1 action",
+            "range": "Touch",
+            "duration": "Concentration, up to 1 minute",
+            "level": "Cantrip",
+            "school": "Divination",
+            "description": "You touch one willing creature. Once before the spell ends, the target can roll a d4 and add the number rolled to one ability check of its choice. It can roll the die before or after making the ability check. The spell then ends.",
+            "higherLevels": "No effect",
+            "imageSrc": "./icons/guidance.webp"
         }
     ],
     "classAbilities": [
