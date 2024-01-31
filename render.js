@@ -74,7 +74,7 @@ const skills = (data) => div('skills', [
     h3('Skills'),
     ...Object.keys(allSkills)
         .flatMap(k => allSkills[k].map(s => ({ ability: k, skill: s })))
-        .sort((a, b) => a.skill > b.skill)
+        .sort((a, b) => a.skill < b.skill ? -1 : 1)
         .map(({ ability, skill }) => {
             const skillName = skill.split('_').join(' ');
 
@@ -142,12 +142,22 @@ const spellCard = (spell) =>
         attribute('Duration', spell.duration),
         attribute('Level', spell.level),
         attribute('School', spell.school),
+        attribute('Range', spell.range),
         ...spell.description.split('\n').map(l => p('description', l)),
         attribute('At higher levels', spell.higherLevels),
         img('spellIcon', spell.imageSrc)
     ]);
 
-const spellCardList = (spells) => div('cardList', spells.map(s => spellCard(s)));
+const spellCardList = (spells) => div('cardList', spells.sort((a, b) => {
+    const aLevel = parseInt(a.level === 'Cantrip' ? 0 : a.level);
+    const bLevel = parseInt(b.level === 'Cantrip' ? 0 : b.level);
+
+    if(aLevel === bLevel) {
+        return a.name < b.name ? -1 : 1;
+    }
+    
+    return aLevel < bLevel ? -1 : 1;
+}).map(s => spellCard(s)));
 
 const abilitiyCard = (ability) =>
     div('card classAbilityCard', [

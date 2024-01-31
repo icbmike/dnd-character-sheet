@@ -108,6 +108,105 @@
             "description": "You touch one willing creature. Once before the spell ends, the target can roll a d4 and add the number rolled to one ability check of its choice. It can roll the die before or after making the ability check. The spell then ends.",
             "higherLevels": "No effect",
             "imageSrc": "./icons/guidance.webp"
+        },
+        {
+            "name": "Sacred Flame",
+            "castingTime": "1 action",
+            "range": "60 feet",
+            "duration": "Instantaneous",
+            "level": "Cantrip",
+            "school": "Evocation",
+            "description": "Flame-like radiance descends on a creature that you can see within range. The target must succeed on a Dexterity saving throw or take 1d8 radiant damage. The target gains no benefit from cover for this saving throw.",
+            "higherLevels": "The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).",
+            "imageSrc": "./icons/sacred_flame.webp"
+        },
+        {
+            "name": "Word of Radiance",
+            "castingTime": "1 action",
+            "range": "5 feet",
+            "duration": "Instantaneous",
+            "level": "Cantrip",
+            "school": "Evocation",
+            "description": "You utter a divine word, and burning radiance erupts from you. Each creature of your choice that you can see within range must succeed on a Constitution saving throw or take 1d6 radiant damage.",
+            "higherLevels": "The spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).",
+            "imageSrc": "./icons/word_of_radiance.webp"
+        },
+        {
+            "name": "Healing Word",
+            "castingTime": "1 bonus action",
+            "range": "60 feet",
+            "duration": "Instantaneous",
+            "level": "1",
+            "school": "Evocation",
+            "description": "A creature of your choice that you can see within range regains hit points equal to 1d4 + your spellcasting ability modifier. This spell has no effect on undead or constructs.",
+            "higherLevels": "When you cast this spell using a spell slot of 2nd level or higher, the healing increases by 1d4 for each slot level above 1st.",
+            "imageSrc": "./icons/healing_word.webp"
+        },
+        {
+            "name": "Guiding Bolt",
+            "castingTime": "1 action",
+            "range": "120 feet",
+            "duration": "1 round",
+            "level": "1",
+            "school": "Evocation",
+            "description": "A flash of light streaks toward a creature of your choice within range. Make a ranged spell attack against the target. On a hit, the target takes 4d6 radiant damage, and the next attack roll made against this target before the end of your next turn has advantage, thanks to the mystical dim light glittering on the target until then.",
+            "higherLevels": "When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d6 for each slot level above 1st.",
+            "imageSrc": "./icons/guiding_bolt.webp"
+        },
+        {
+            "name": "Shield of Faith",
+            "castingTime": "1 bonus action",
+            "range": "60 feet",
+            "duration": "Concentration, up to 10 minutes",
+            "level": "1",
+            "school": "Abjuration",
+            "description": "A shimmering field appears and surrounds a creature of your choice within range, granting it a +2 bonus to AC for the duration.",
+            "higherLevels": "No effect",
+            "imageSrc": "./icons/shield_of_faith.webp"
+        },
+        {
+            "name": "Prayer of Healing",
+            "castingTime": "10 minutes",
+            "range": "30 feet",
+            "duration": "Instantaneous",
+            "level": "2",
+            "school": "Evocation",
+            "description": "Up to six creatures of your choice that you can see within range each regain hit points equal to 2d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs.",
+            "higherLevels": "When you cast this spell using a spell slot of 3rd level or higher, the healing increases by 1d8 for each slot level above 2nd.",
+            "imageSrc": "./icons/prayer_of_healing.webp"
+        },
+        {
+            "name": "Hold Person",
+            "castingTime": "1 action",
+            "range": "60 feet",
+            "duration": "Concentration, up to 1 minute",
+            "level": "2",
+            "school": "Enchantment",
+            "description": "Choose a humanoid that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration. At the end of each of its turns, the target can make another Wisdom saving throw. On a success, the spell ends on the target.",
+            "higherLevels": "When you cast this spell using a spell slot of 3rd level or higher, you can target one additional humanoid for each slot level above 2nd. The humanoids must be within 30 feet of each other when you target them.",
+            "imageSrc": "./icons/hold_person.webp"
+        },
+        {
+            "name": "Lesser Restoration",
+            "castingTime": "1 action",
+            "range": "Touch",
+            "duration": "Instantaneous",
+            "level": "2",
+            "school": "Abjuration",
+            "description": "You touch a creature and can end either one disease or one condition afflicting it. The condition can be blinded, deafened, paralyzed, or poisoned.",
+            "higherLevels": "No effect",
+            "imageSrc": "./icons/lesser_restoration.webp"
+        },
+        {
+            "name": "Mass Healing Word",
+            "castingTime": "1 bonus action",
+            "range": "Touch",
+            "duration": "Instantaneous",
+            "level": "3",
+            "school": "Evocation",
+            "description": "As you call out words of restoration, up to six creatures of your choice that you can see within range regain hit points equal to 1d4 + your spellcasting ability modifier. This spell has no effect on undead or constructs.",
+            "higherLevels": "When you cast this spell using a spell slot of 4th level or higher, the healing increases by 1d4 for each slot level above 3rd.",
+            "imageSrc": "./icons/mass_healing_word.webp"
         }
     ],
     "classAbilities": [
