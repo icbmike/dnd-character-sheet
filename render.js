@@ -120,7 +120,7 @@ const stats = (data) => [
             attribute('Spell Attack Bonus', scoreToModifier(data.abilities.wisdom) + proficiencyBonus(data)),
             attribute('Spell Save DC', 8 + scoreToModifier(data.abilities.wisdom) + proficiencyBonus(data))
         ]),
-        div([
+        div('hitPointsAndSpellSlots', [
             hitPoints(data),
             spellCasting(data)
         ]),

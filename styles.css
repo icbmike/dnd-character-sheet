@@ -6,7 +6,13 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 20px
+     padding: 20px
+}
+
+@media print {
+    body {
+        padding: 0;
+    }
 }
 
 .row {
@@ -21,6 +27,7 @@ body {
     padding: 12px;
     position: relative;
     min-height: 160px;
+    break-inside: avoid;
 }
 
 .cardList {
@@ -193,4 +200,15 @@ body {
 
 .stats {
     width: 212px;
+    flex: 0 0 auto;
 }
+
+.hitPointsAndSpellSlots {
+    flex: 1 1 auto;
+}
+
+@page {
+    size: 'A4';
+    margin: 0.5cm;
+}
+    
