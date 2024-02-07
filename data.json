@@ -5,7 +5,6 @@
     "race": "Hadozee",
     "level": 6,
     "maxHitPoints": 32,
-    "armorClass": 15,
     "hitDie": "d8",
     "abilities": {
         "strength": 12,
@@ -263,6 +262,14 @@
             "weaponType": "crossbow, simple",
             "range": "80 feet (320 feet with disadvantage)",
             "imageSrc": "./icons/light_crossbow.png"
+        },
+        {
+            "name": "Breastplate +1",
+            "armorType": "medium",
+            "armorClass": 15,
+            "weight": 20,
+            "description": "This armor consists of a fitted metal chest piece worn with supple leather. Although it leaves the legs and arms relatively unprotected, this armor provides good protection for the wearer's vital organs while leaving the wearer relatively unencumbered.",
+            "imageSrc": "./icons/breastplate_plus_1.png"
         }
     ]
 }

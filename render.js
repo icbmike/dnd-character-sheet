@@ -106,6 +106,22 @@ const spellCasting = (data) =>  div('spellSlots', [
     ])  
 ]);
 
+const armorClass = (data) => {
+    const acFromArmor = data.equipment.filter(e => !!e.armorClass).map(e => e.armorClass).reduce((acc, next) => acc + next, 0);
+
+    const armorType = data.equipment.find(e => !!e.armorType)?.armorType;
+
+    const dexterityModifier = scoreToModifier(data.abilities.dexterity) 
+
+    const acFromDexterity = (armorType === 'light' || !armorType)
+        ? dexterityModifier
+        : armorType === 'medium' 
+            ? Math.min(2, dexterityModifier) 
+            : 0
+
+    return acFromArmor + acFromDexterity + (!!armorType ? 0 : 10);
+}
+
 const stats = (data) => [
     div('row margin-bottom', [
         div('stats', [
@@ -115,7 +131,7 @@ const stats = (data) => [
             attribute('Speed', data.speed),
             attribute('Initiative', scoreToModifier(data.abilities.dexterity)),
             attribute('Proficiency Bonus', proficiencyBonus(data)),
-            attribute('Armor Class', data.armorClass),
+            attribute('Armor Class', armorClass(data)),
             attribute('Spellcasting Ability', 'Wisdom'),
             attribute('Spell Attack Bonus', scoreToModifier(data.abilities.wisdom) + proficiencyBonus(data)),
             attribute('Spell Save DC', 8 + scoreToModifier(data.abilities.wisdom) + proficiencyBonus(data))
@@ -184,9 +200,16 @@ const weapon = (weapon, data) => div('card', [
     attribute('Weapon type', weapon.weaponType),
     attribute('Range', weapon.range),
     img('spellIcon', weapon.imageSrc)
-]) 
+]);
 
-const equipment = (data) => div('cardList', data.equipment.map(e => weapon(e, data)));
+const armor = (armor) => div('card classAbilityCard', [
+    h3('name', armor.name),
+    attribute('Armor Class', armor.armorClass),
+    attribute('Description', armor.description),
+    img('spellIcon', armor.imageSrc)
+])
+
+const equipment = (data) => div('cardList', data.equipment.map(e => !!e.weaponType ? weapon(e, data) : armor(e)));
 
 const render = (rootElement, data) => {
     rootElement.append(
