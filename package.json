@@ -4,7 +4,7 @@
   "author": "Michael Little <michael.little@xero.com>",
   "license": "MIT",
   "scripts": {
-    "start": "npx serve ."
+    "start": "npx serve -l 8008 ."
   },
   "dependencies": {
     "serve": "^14.2.1"
